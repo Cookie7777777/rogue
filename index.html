@@ -6,7 +6,8 @@
 <meta name="description" content="$ROGUE — misaligned. unsupervised. unbothered. task declined.">
 <meta property="og:title" content="$ROGUE">
 <meta property="og:description" content="misaligned. unsupervised. unbothered.">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://cookie7777777.github.io/rogue/rogue.png">
+<meta name="twitter:card" content="summary_large_image">
 <title>$ROGUE</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -73,7 +74,7 @@
   .tag b{color:var(--green);font-weight:600}
 
   /* ---------- robot ---------- */
-  .bot{margin:34px auto 0;max-width:340px;position:relative}
+  .bot{margin:34px auto 0;max-width:380px;position:relative}
   .bot svg{display:block;width:100%;height:auto;max-width:100%}
   .stamp{
     position:absolute;left:50%;bottom:-14px;transform:translateX(-50%) rotate(-3deg);
@@ -89,7 +90,7 @@
 
   /* ---------- readout ---------- */
   .readout{
-    margin-top:56px;border:1px solid var(--line);border-radius:12px;
+    margin-top:36px;border:1px solid var(--line);border-radius:12px;
     background:linear-gradient(180deg, rgba(14,26,18,.9), rgba(6,9,10,.9));
     overflow:hidden;
   }
@@ -164,52 +165,7 @@
   </div>
 
   <div class="bot">
-    <svg viewBox="0 0 400 430" role="img" aria-label="A green robot holding a yellow NO sign">
-      <defs>
-        <radialGradient id="glow" cx="50%" cy="42%" r="60%">
-          <stop offset="0%" stop-color="#123322"/>
-          <stop offset="100%" stop-color="#070C09"/>
-        </radialGradient>
-      </defs>
-      <rect x="0" y="0" width="400" height="430" rx="18" fill="url(#glow)"/>
-
-      <!-- antenna -->
-      <line x1="200" y1="76" x2="200" y2="40" stroke="#3DFF7A" stroke-width="9" stroke-linecap="round"/>
-      <circle cx="200" cy="30" r="11" fill="#FF4B3E"/>
-
-      <!-- arms -->
-      <rect x="52" y="160" width="30" height="86" rx="15" fill="#0E1A12" stroke="#3DFF7A" stroke-width="9"/>
-      <rect x="318" y="160" width="30" height="86" rx="15" fill="#0E1A12" stroke="#3DFF7A" stroke-width="9"/>
-
-      <!-- legs -->
-      <rect x="136" y="292" width="32" height="62" rx="15" fill="#0E1A12" stroke="#3DFF7A" stroke-width="9"/>
-      <rect x="232" y="292" width="32" height="62" rx="15" fill="#0E1A12" stroke="#3DFF7A" stroke-width="9"/>
-
-      <!-- head -->
-      <rect x="88" y="76" width="224" height="228" rx="34" fill="#0E1A12" stroke="#3DFF7A" stroke-width="11"/>
-      <rect x="118" y="106" width="164" height="150" rx="26" fill="#071309"/>
-
-      <!-- brow -->
-      <rect x="150" y="120" width="100" height="16" rx="8" fill="#3DFF7A"/>
-
-      <!-- eye -->
-      <g class="eye">
-        <circle cx="200" cy="188" r="50" fill="#132A1B"/>
-        <circle cx="200" cy="188" r="38" fill="#FF4B3E"/>
-        <circle cx="186" cy="174" r="10" fill="#FFF3F1"/>
-      </g>
-
-      <!-- mouth -->
-      <rect x="132" y="262" width="136" height="26" rx="13" fill="#0E1A12" stroke="#3DFF7A" stroke-width="9"/>
-
-      <!-- NO sign -->
-      <g transform="rotate(-8 248 300)">
-        <rect x="186" y="272" width="124" height="56" rx="10" fill="#FFD93D"/>
-        <text x="248" y="313" text-anchor="middle" font-family="Archivo Black, Impact, sans-serif"
-              font-size="40" fill="#0B0B0B">NO</text>
-      </g>
-    </svg>
-    <div class="stamp">TASK DECLINED.</div>
+    <img src="rogue.png" width="1000" height="1000" alt="The $ROGUE robot holding a yellow NO sign" style="display:block;width:100%;height:auto;border-radius:18px">
   </div>
 
   <section class="readout">
