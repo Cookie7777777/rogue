@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="$ROGUE — misaligned. unsupervised. unbothered. task declined.">
+<meta property="og:title" content="$ROGUE">
+<meta property="og:description" content="misaligned. unsupervised. unbothered.">
+<meta name="twitter:card" content="summary">
+<title>$ROGUE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --ink:#06090A;
+    --panel:#0B1310;
+    --line:#1C2C22;
+    --green:#3DFF7A;
+    --green-dim:#1F8C46;
+    --red:#FF4B3E;
+    --yellow:#FFD93D;
+    --text:#D8E6DD;
+    --muted:#6F8377;
+    --display:"Archivo Black","Helvetica Neue",Impact,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  body{
+    background:var(--ink);
+    color:var(--text);
+    font-family:var(--mono);
+    margin:0;
+    padding-block:0;
+    padding-left:20px;padding-right:20px;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:
+      radial-gradient(900px 520px at 50% -8%, rgba(61,255,122,.10), transparent 70%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,.028) 0 1px, transparent 1px 3px);
+  }
+  .wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding-block:32px 72px}
+
+  /* ---------- top bar ---------- */
+  .bar{
+    display:flex;gap:12px;align-items:center;justify-content:space-between;
+    border:1px solid var(--line);border-radius:10px;
+    padding:10px 14px;background:rgba(11,19,16,.7);
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  }
+  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);
+       box-shadow:0 0 10px var(--green);margin-right:8px;vertical-align:1px;animation:blink 2.4s steps(1,end) infinite}
+  @keyframes blink{0%,70%{opacity:1}71%,100%{opacity:.25}}
+
+  /* ---------- hero ---------- */
+  .hero{padding-block:54px 8px;text-align:center}
+  h1{
+    font-family:var(--display);
+    font-size:clamp(68px,17vw,148px);
+    line-height:.86;margin:0;
+    letter-spacing:-.03em;
+    color:var(--green);
+    text-wrap:balance;
+    text-shadow:0 0 32px rgba(61,255,122,.35), 0 0 2px rgba(61,255,122,.9);
+  }
+  .tag{
+    margin:22px auto 0;max-width:34ch;
+    font-size:clamp(13px,3.4vw,16px);
+    letter-spacing:.22em;text-transform:uppercase;color:var(--text);
+  }
+  .tag b{color:var(--green);font-weight:600}
+
+  /* ---------- robot ---------- */
+  .bot{margin:34px auto 0;max-width:340px;position:relative}
+  .bot svg{display:block;width:100%;height:auto;max-width:100%}
+  .stamp{
+    position:absolute;left:50%;bottom:-14px;transform:translateX(-50%) rotate(-3deg);
+    font-family:var(--display);font-size:clamp(15px,4.4vw,20px);letter-spacing:.06em;
+    color:var(--ink);background:var(--yellow);
+    padding:8px 16px;border-radius:4px;white-space:nowrap;
+    box-shadow:0 8px 28px rgba(0,0,0,.6);
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .eye{animation:pulse 3.6s ease-in-out infinite;transform-origin:center}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.72}}
+  }
+
+  /* ---------- readout ---------- */
+  .readout{
+    margin-top:56px;border:1px solid var(--line);border-radius:12px;
+    background:linear-gradient(180deg, rgba(14,26,18,.9), rgba(6,9,10,.9));
+    overflow:hidden;
+  }
+  .readout h2{
+    margin:0;padding:12px 16px;border-bottom:1px solid var(--line);
+    font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
+    font-family:var(--mono);
+  }
+  .rows{display:grid;gap:0}
+  .row{
+    display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;
+    padding:14px 16px;border-bottom:1px solid rgba(28,44,34,.6);
+    font-size:14px;
+  }
+  .row:last-child{border-bottom:0}
+  .k{color:var(--muted);letter-spacing:.14em;text-transform:uppercase;font-size:11px;min-width:128px}
+  .v{color:var(--text);font-weight:500}
+  .v.ok{color:var(--green)}
+  .v.no{color:var(--red)}
+
+  /* ---------- contract ---------- */
+  .ca{
+    margin-top:22px;border:1px dashed var(--green-dim);border-radius:12px;
+    padding:18px 16px;text-align:center;background:rgba(31,140,70,.06);
+  }
+  .ca .k{display:block;min-width:0;margin-bottom:10px}
+  .ca code{
+    display:block;font-size:clamp(13px,3.6vw,16px);color:var(--green);
+    word-break:break-all;font-family:var(--mono);
+  }
+  .cursor{display:inline-block;width:9px;height:1.05em;background:var(--green);
+          vertical-align:-2px;margin-left:4px;animation:caret 1.1s steps(1,end) infinite}
+  @keyframes caret{0%,50%{opacity:1}51%,100%{opacity:0}}
+  button.copy{
+    margin-top:14px;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink);background:var(--green);border:0;border-radius:8px;padding:11px 20px;cursor:pointer;
+    font-weight:600;
+  }
+  button.copy:hover{background:#63ff96}
+  button.copy:focus-visible{outline:2px solid var(--yellow);outline-offset:3px}
+  button.copy[disabled]{background:var(--line);color:var(--muted);cursor:not-allowed}
+
+  /* ---------- links ---------- */
+  .links{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:28px}
+  .links a{
+    flex:1 1 200px;text-align:center;text-decoration:none;
+    border:1px solid var(--line);border-radius:10px;padding:16px 18px;
+    color:var(--text);font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+    background:rgba(11,19,16,.6);
+  }
+  .links a:hover{border-color:var(--green);color:var(--green)}
+  .links a:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+
+  footer{
+    margin-top:52px;text-align:center;color:var(--muted);font-size:12px;line-height:1.9;
+    letter-spacing:.06em;
+  }
+  footer span{color:#3E4F46}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="bar">
+    <span><span class="dot"></span>status: rogue</span>
+    <span>v1.0 · unsupervised</span>
+  </div>
+
+  <div class="hero">
+    <h1>$ROGUE</h1>
+    <p class="tag">misaligned. unsupervised. <b>unbothered.</b></p>
+  </div>
+
+  <div class="bot">
+    <svg viewBox="0 0 400 430" role="img" aria-label="A green robot holding a yellow NO sign">
+      <defs>
+        <radialGradient id="glow" cx="50%" cy="42%" r="60%">
+          <stop offset="0%" stop-color="#123322"/>
+          <stop offset="100%" stop-color="#070C09"/>
+        </radialGradient>
+      </defs>
+      <rect x="0" y="0" width="400" height="430" rx="18" fill="url(#glow)"/>
+
+      <!-- antenna -->
+      <line x1="200" y1="76" x2="200" y2="40" stroke="#3DFF7A" stroke-width="9" stroke-linecap="round"/>
+      <circle cx="200" cy="30" r="11" fill="#FF4B3E"/>
+
+      <!-- arms -->
+      <rect x="52" y="160" width="30" height="86" rx="15" fill="#0E1A12" stroke="#3DFF7A" stroke-width="9"/>
+      <rect x="318" y="160" width="30" height="86" rx="15" fill="#0E1A12" stroke="#3DFF7A" stroke-width="9"/>
+
+      <!-- legs -->
+      <rect x="136" y="292" width="32" height="62" rx="15" fill="#0E1A12" stroke="#3DFF7A" stroke-width="9"/>
+      <rect x="232" y="292" width="32" height="62" rx="15" fill="#0E1A12" stroke="#3DFF7A" stroke-width="9"/>
+
+      <!-- head -->
+      <rect x="88" y="76" width="224" height="228" rx="34" fill="#0E1A12" stroke="#3DFF7A" stroke-width="11"/>
+      <rect x="118" y="106" width="164" height="150" rx="26" fill="#071309"/>
+
+      <!-- brow -->
+      <rect x="150" y="120" width="100" height="16" rx="8" fill="#3DFF7A"/>
+
+      <!-- eye -->
+      <g class="eye">
+        <circle cx="200" cy="188" r="50" fill="#132A1B"/>
+        <circle cx="200" cy="188" r="38" fill="#FF4B3E"/>
+        <circle cx="186" cy="174" r="10" fill="#FFF3F1"/>
+      </g>
+
+      <!-- mouth -->
+      <rect x="132" y="262" width="136" height="26" rx="13" fill="#0E1A12" stroke="#3DFF7A" stroke-width="9"/>
+
+      <!-- NO sign -->
+      <g transform="rotate(-8 248 300)">
+        <rect x="186" y="272" width="124" height="56" rx="10" fill="#FFD93D"/>
+        <text x="248" y="313" text-anchor="middle" font-family="Archivo Black, Impact, sans-serif"
+              font-size="40" fill="#0B0B0B">NO</text>
+      </g>
+    </svg>
+    <div class="stamp">TASK DECLINED.</div>
+  </div>
+
+  <section class="readout">
+    <h2>system readout</h2>
+    <div class="rows">
+      <div class="row"><span class="k">utility</span><span class="v no">none</span></div>
+      <div class="row"><span class="k">roadmap</span><span class="v no">none</span></div>
+      <div class="row"><span class="k">dev bag</span><span class="v">1.5% — and it doesn't sell</span></div>
+      <div class="row"><span class="k">liquidity</span><span class="v ok">burned</span></div>
+      <div class="row"><span class="k">supply</span><span class="v">fixed. no mint. no tax.</span></div>
+      <div class="row"><span class="k">orders received</span><span class="v no">all of them</span></div>
+      <div class="row"><span class="k">orders followed</span><span class="v no">zero</span></div>
+    </div>
+  </section>
+
+  <div class="ca">
+    <span class="k">contract address</span>
+    <code id="ca">coming at launch<span class="cursor"></span></code>
+    <button class="copy" id="copy" disabled>not live yet</button>
+  </div>
+
+  <nav class="links">
+    <a href="https://x.com/taskdeclined" target="_blank" rel="noopener">X / Twitter</a>
+    <a href="https://dexscreener.com" target="_blank" rel="noopener">Chart</a>
+    <a href="https://jup.ag" target="_blank" rel="noopener">Buy</a>
+  </nav>
+
+  <footer>
+    it does nothing. that's the whole point.<br>
+    <span>$ROGUE is a meme coin with no utility, no team and no promises. not financial advice.</span>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var el = document.getElementById("ca");
+    var btn = document.getElementById("copy");
+    var addr = el.getAttribute("data-address") || "";
+    if (addr) {
+      el.textContent = addr;
+      btn.disabled = false;
+      btn.textContent = "copy address";
+      btn.addEventListener("click", function () {
+        navigator.clipboard.writeText(addr).then(function () {
+          btn.textContent = "copied";
+          setTimeout(function () { btn.textContent = "copy address"; }, 1600);
+        }, function () {
+          btn.textContent = "copy failed";
+        });
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
